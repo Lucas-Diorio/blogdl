@@ -1,0 +1,25 @@
+{% extends "blog/padre.html" %}
+
+{% load static %}
+
+{% block titulo_principal %}
+<h1 class="fw-bolder">Login</h1>
+<p class="lead mb-0">Por favor loguearse para ingresar a la web</p>
+{% endblock %}
+
+{% block side_widget %}
+                        
+<div class="card-header">Login</div>
+<div class="card-body"></div>
+<form action="{% url 'login' %}" method="POST">{% csrf_token %}
+  <table>
+    {{ form.as_table }}
+  </table>
+  <input type="submit" value="Ingresar">
+
+  {{ mensaje }}
+
+
+</div>
+
+{% endblock %}
