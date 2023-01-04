@@ -18,10 +18,13 @@ from django.urls import path, include, re_path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('blog.urls')),
+    path('blog/', include('blog.urls')),
     re_path(r'^ckeditor/', include('ckeditor_uploader.urls')), # The CKEditor path
     
     #usuarios
-    path('usuarios/', include('usuarios.urls')),
+    path('', include('usuarios.urls')),
+
+    #mensajes
+    path('mensajes/', include("mensajes.urls")),
     
 ]

@@ -1,0 +1,33 @@
+{% extends "usuarios/user.html" %}
+{% load static %}
+
+{% block titulo_principal %}
+<span class="subheading">mensajeFormulario</span>
+{% endblock %}
+
+{% block side_widget %}
+{% csrf_token %} 
+
+<!-- <h2 class="text-white mb-5">mensaje</h2>
+<form action="{% url 'register' %}" method="POST">{% csrf_token %}
+   
+    <table>
+        {{ form.as_table }}
+    </table>
+    <input type="submit" value="Ingresar">
+
+    </form> -->
+<h2 class="text-black mb-5">mensaje</h2>
+<form action="mensajeFormulario" method="POST"> {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+
+    <input type="submit" value="Enviar">
+    
+
+
+</form>
+
+    {{ alerta }}
+{% endblock %}

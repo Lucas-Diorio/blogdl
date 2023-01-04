@@ -1,0 +1,35 @@
+{% extends "usuarios/user.html" %}
+{% load static %}
+
+{% block titulo_principal %}
+<span class="subheading">mensajes</span>
+{% endblock %}
+
+{% block side_widget %}
+
+<h4 class="text-black-50" style="text-align: center;">Listado de mensajes recibidos</h4>
+<table >
+    <tr>
+        <th>De:      </th> 
+        <!-- <th>Para:       </th> -->
+        <th>Mensajes:   </th>
+        <th>hora        </th>
+        <th>leido       </th>
+    </tr>
+    {% for indice in mensajes %}
+    <tr>
+        <td>{{ indice.enviar }}</td>
+        <!-- <td> {{ indice.recibir }}</td> -->
+        <td style="text-align: center;">{{ indice.mensaje }}</td>
+        <td>{{ indice.horarec }}</td>
+        <td>{{ indice.leido }}</td>
+        
+    </tr>   
+        
+    {% endfor %}
+    
+</table>
+<br>
+<br>
+
+{% endblock %}
