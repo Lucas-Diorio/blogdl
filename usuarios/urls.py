@@ -10,6 +10,6 @@ urlpatterns = [
     path('login/', Login_request, name = "login"),
     path('register/', Register, name = "register"),
     path('logout/', LogoutView.as_view(), name = "logout"),
-    # path('repuestos/', repuestos, name = "repuestos"),
-    # path('tecnico/', tecnico, name = "tecnico"), 
+    
+    
 ]

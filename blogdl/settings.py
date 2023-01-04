@@ -56,7 +56,7 @@ ROOT_URLCONF = 'blogdl.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['C:/Users/luuca/Desktop/Coderhouse/blogdl/templates'],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -123,3 +123,9 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#ckeditor upload path
+CKEDITOR_UPLOAD_PATH = "uploads/"
+
+LOGIN_REDIRECT_URL = "user"
+LOGOUT_REDIRECT_URL = "user"

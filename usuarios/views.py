@@ -17,7 +17,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 
 # Create your views here.
 def userPage(request):
-    return render(request, "user.html")
+    return render(request, "usuarios/user.html")
 
 
 
@@ -38,12 +38,12 @@ def Login_request(request):
             else: 
                 return render(request, 'blog/inicio.html', {'mensaje': 'Usuario o contraseña incorrectos'})
         else:
-            return render(request, 'login.html', {'mensaje':"Usuario o contraseña incorrectos", "form": form}) 
+            return render(request, 'usuarios/login.html', {'mensaje':"Usuario o contraseña incorrectos", "form": form}) 
 
 
     else:
         form = AuthenticationForm()
-    return render(request, "login.html", {"form": form})
+    return render(request, "usuarios/login.html", {"form": form})
 
 # register
 def Register(request):
@@ -52,7 +52,7 @@ def Register(request):
         if form.is_valid():
             username = form.cleaned_data.get("username")
             form.save()
-            return render(request, 'inicio.html', {'mensaje':"usuario creado correctamente"})
+            return render(request, 'usuarios/index.html', {'mensaje':"usuario creado correctamente"})
     else:
         form = RegisterForm()
-    return render(request, "register.html", {"form":form})
+    return render(request, "usuarios/register.html", {"form":form})
