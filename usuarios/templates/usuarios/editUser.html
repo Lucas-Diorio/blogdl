@@ -1,0 +1,17 @@
+{% extends "usuarios/user.html" %}
+{% load static %}
+
+
+
+{% block side_widget %}
+<h2 class="text-white mb-5">Editando usuario</h2>
+<form action="{% url 'editUser' %}" method="POST">{% csrf_token %}
+   
+    <table>
+        {{ form.as_table }}
+    </table>
+    <input type="submit" value="Editar usuario">
+
+    </form>
+    {{ mensaje }}
+{% endblock %}
