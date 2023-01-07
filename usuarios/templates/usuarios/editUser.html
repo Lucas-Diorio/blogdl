@@ -1,17 +1,56 @@
 {% extends "usuarios/user.html" %}
+
 {% load static %}
 
-
-
-{% block side_widget %}
-<h2 class="text-white mb-5">Editando usuario</h2>
-<form action="{% url 'editUser' %}" method="POST">{% csrf_token %}
-   
-    <table>
-        {{ form.as_table }}
-    </table>
-    <input type="submit" value="Editar usuario">
-
-    </form>
-    {{ mensaje }}
+{% block titulo_principal %}
+<h1 class="fw-bolder">Editar Usuario</h1>
+<p class="lead mb-0">Modifica la información de tu usuario</p>
+<p class="lead mb-0">{{ mensaje }}</p>
 {% endblock %}
+
+{% block contenido %}
+        <div class="container">
+            <div class="row">
+                <!-- Blog entries-->
+                <div class="col-lg-8">
+                    <!-- Featured blog post-->                    
+                    <div class="card mb-4">
+                        
+                        <div class="card-body">
+                          {{ mensaje }}
+                          
+                            <form action="{% url 'editUser' %}" method="POST">{% csrf_token %}
+   
+                                <table>
+                                    {{ form.as_table }}
+                                </table>
+                                <br>
+                                <input type="submit" value="Editar usuario">
+
+                            </form>
+                        </div>
+                    </div>
+                    <!-- Pagination-->
+                    
+                </div>
+                <!-- Side widgets-->
+                <div class="col-lg-4">
+                    
+                    
+                    <!-- Side widget-->
+                    <div class="card mb-4">
+                        {% block side_widget %}
+                        
+                        {% endblock %}
+
+                        {% block mensaje %}
+                        
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}
+
+
+

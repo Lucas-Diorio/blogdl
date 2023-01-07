@@ -19,7 +19,7 @@ def mensajeFormulario(request):
         
         if form.is_valid():
             informacion = form.cleaned_data
-            print(informacion)
+            
 
             
             paraquien = informacion['receptor']
@@ -28,7 +28,7 @@ def mensajeFormulario(request):
 
             mensaje1 = Mensaje(enviar=(usuario), recibir = (paraquien), mensaje=textoMensaje, leido = False)
             mensaje1.save()
-            return render(request, 'mensajes/mensajeFormulario.html', {"form": form, "alerta": "mensaje enviado"} )
+            return render(request, 'mensajes/mensajeFormulario.html', {"form": form, "alerta": "Mensaje enviado"} )
         else:
             return render(request, 'mensajes/home.html', {"alerta": "pailas"} )
     else:
@@ -49,14 +49,14 @@ def leerMensaje(request):
     for mensaje in ver:
         mensaje.leido = True
         mensaje.save()
-    print(ver)
+    
     
     return render(request, "mensajes/leerMensaje.html", {"mensajes": ver})
 
 def enviadoMensaje(request):
     usuario = request.user
     ver = Mensaje.objects.filter(enviar = usuario)
-    print(ver)
+    
     
     return render(request, "mensajes/enviadoMensaje.html", {"mensajes": ver})
 

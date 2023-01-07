@@ -2,10 +2,10 @@
 {% load static %}
 
 {% block titulo_principal %}
-<span class="subheading">mensajeFormulario</span>
+<h1 class="fw-bolder">Enviar mensaje</h1>
 {% endblock %}
 
-{% block side_widget %}
+{% block contenido %}
 {% csrf_token %} 
 
 <!-- <h2 class="text-white mb-5">mensaje</h2>
@@ -17,17 +17,18 @@
     <input type="submit" value="Ingresar">
 
     </form> -->
-<h2 class="text-black mb-5">mensaje</h2>
+<h2 class="text-black mb-5">Escribir mensaje</h2>
 <form action="mensajeFormulario" method="POST"> {% csrf_token %}
     <table>
         {{ form.as_table }}
     </table>
-
+    <br>
     <input type="submit" value="Enviar">
     
 
 
 </form>
-
+<br>
     {{ alerta }}
+    
 {% endblock %}

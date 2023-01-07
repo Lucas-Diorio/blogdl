@@ -2,6 +2,8 @@ from django import forms
 # registros
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.forms import ModelForm
+from usuarios.models import *
 
 #  creacion del formulario
 class RegisterForm(UserCreationForm):
@@ -31,3 +33,8 @@ class UserEditForm(UserCreationForm):
         model = User 
         fields = ["username", "email", "password1", "password2"]
         help_texts = {k:"" for k in fields} #para cada uno de los campos de los formularios le asigna un valor vacio.
+
+class Form_Perfil(ModelForm):
+    class Meta:
+        model = Perfil
+        fields = ['descripcion', 'avatar']

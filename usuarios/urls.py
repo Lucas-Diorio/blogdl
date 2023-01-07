@@ -10,6 +10,9 @@ urlpatterns = [
     path('login/', Login_request, name = "login"),
     path('register/', Register, name = "register"),
     path('logout/', LogoutView.as_view(), name = "logout"),
-    path('editUser/', editUser, name = "editUser")
+    path('editUser/', editUser, name = "editUser"),
+    path('perfiledit/', perfil_edit, name = "perfiledit"),
+    path('userperfil/', user_perfil, name = "userperfil"),
+
     
 ]

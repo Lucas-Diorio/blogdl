@@ -1,0 +1,40 @@
+{% extends "usuarios/padre.html" %}
+{% load static %}
+
+
+{% block encabezado %}
+        <header class="py-5 bg-light border-bottom mb-4">
+            <div class="container">
+                <div class="text-center my-5">
+                    {% block titulo_principal %}
+                        <h1 class="fw-bolder">Hacer un Post</h1>
+                        <p class="lead mb-0">{{ mensaje }}</p>
+                    {% endblock %}
+                </div>
+            </div>
+        </header>
+{% endblock %}
+
+{% block contenido %}
+        <div class="container">
+            <div class="row">
+                <!-- Blog entries-->
+                <div class="col-lg-8">
+                    <!-- Featured blog post-->
+                    
+                    <div class="card mb-4">
+                        <form action="{% url 'addpost' %}" method="post" enctype="multipart/form-data"> {% csrf_token %}
+                            <table>
+                                {{ form_post }}
+                                {{ form_post.media }}
+                            </table>
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-primary btn-block" value="Agregar post">
+                            </div>
+                        </form>
+                    </div>
+                
+                
+            </div>
+        </div>
+{% endblock %}

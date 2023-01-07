@@ -1,19 +1,41 @@
 {% extends "usuarios/user.html" %}
+
 {% load static %}
 
-{% block titulo_principal %} 
-<span class="subheading">Mensajes</span>
+{% block titulo_principal %}
+<h1 class="fw-bolder">Mensajes</h1>
+<p class="lead mb-0">Casilla de Mensajes</p>
 {% endblock %}
 
-{% block side_widget %}
-<h2 class="text-black mb-5">mensaje</h2>
-<form action="{% url 'register' %}" method="POST">{% csrf_token %}
+{% block contenido %}
+        <div class="container">
+            <div class="row">
+                <!-- Blog entries-->
+                <div class="col-lg-8">
+                    <!-- Featured blog post-->                    
+                    <div class="card mb-4">
+                        
+                        <div class="card-body">
+                          {{ mensaje }}
+                          <form action="{% url 'register' %}" method="POST">{% csrf_token %}
    
-    <table>
-        {{ form.as_table }}
-    </table>
-    <input type="submit" value="Ingresar">
-
-    </form>
-    {{ alerta }}
+                            <table>
+                                {{ form.as_table }}
+                            </table>
+                            <input type="submit" value="Ingresar">
+                            <br>
+                            {{ alerta }}
+                        
+                            </form>
+                        </div>
+                    </div>
+                    <!-- Pagination-->
+                    
+                </div>
+                
+            </div>
+        </div>
 {% endblock %}
+
+
+

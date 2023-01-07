@@ -4,5 +4,6 @@ from blog.views import *
 
 urlpatterns = [
     path('', inicio, name="inicio"),
-    path('aboutme', aboutme, name="aboutme"),
+    path('aboutme/', aboutme, name="aboutme"),
+    path('addpost/', add_post, name="addpost"),
 ]

@@ -2,27 +2,27 @@
 {% load static %}
 
 {% block titulo_principal %}
-<span class="subheading">mensajes</span>
+<h1 class="fw-bolder">Mensajes recibidos</h1>
 {% endblock %}
 
-{% block side_widget %}
+{% block contenido %}
 
 <h4 class="text-black-50" style="text-align: center;">Listado de mensajes recibidos</h4>
-<table >
+<table style="width:90%" border=1 >
     <tr>
-        <th>De:      </th> 
+        <th style="width:20px">De:      </th> 
         <!-- <th>Para:       </th> -->
-        <th>Mensajes:   </th>
-        <th>hora        </th>
-        <th>leido       </th>
+        <th style="width:40px">Mensajes:   </th>
+        <th style="width:40px">hora        </th>
+        <th style="width:40px">leido       </th>
     </tr>
     {% for indice in mensajes %}
     <tr>
-        <td>{{ indice.enviar }}</td>
+        <td style="width:20px">{{ indice.enviar }}</td>
         <!-- <td> {{ indice.recibir }}</td> -->
-        <td style="text-align: center;">{{ indice.mensaje }}</td>
-        <td>{{ indice.horarec }}</td>
-        <td>{{ indice.leido }}</td>
+        <td style="width:40px">{{ indice.mensaje }}</td>
+        <td style="width:40px">{{ indice.horarec }}</td>
+        <td style="width:40px">{{ indice.leido }}</td>
         
     </tr>   
         

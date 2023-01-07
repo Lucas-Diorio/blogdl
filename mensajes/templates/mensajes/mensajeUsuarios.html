@@ -1,22 +1,55 @@
 {% extends "usuarios/user.html" %}
+
 {% load static %}
 
 {% block titulo_principal %}
-
+<h1 class="fw-bolder">Mensajes</h1>
+<p class="lead mb-0">Mensajes de usuarios</p>
 {% endblock %}
 
-{% block side_widget %}
+{% block contenido %}
+        <div class="container">
+            <div class="row">
+                <!-- Blog entries-->
+                <div class="col-lg-8">
+                    <!-- Featured blog post-->                    
+                    <div class="card mb-4">
+                        
+                        <div class="card-body">
+                          
+                            
+                              
+                            <a class="btn btn-primary" href="{% url 'mensajeFormulario' %}">Enviar mensajes</a>
+                            <br> 
+                            <br>  
+                            <a class="btn btn-primary"href="{% url 'leerMensaje' %}">Mensajes Recibidos</a>
+                            <br> 
+                            <br> 
+                            <a class="btn btn-primary"href="{% url 'enviadoMensaje' %}">Mensajes Enviados</a>
 
-   
-<span class="subheading">Enviar mensaje a un usuario</span><br> {% csrf_token %} 
-<br>  
-<a class="btn btn-success" href="{% url 'mensajeFormulario' %}">Enviar mensajes</a>
-<br> 
-<a class="btn btn-success"href="{% url 'leerMensaje' %}">Mensajes Recibidos</a>
-<br> 
-<a class="btn btn-success"href="{% url 'enviadoMensaje' %}">Mensajes Enviados</a>
 
+                            {{ mensaje }}
+                        </div>
+                    </div>
+                    <!-- Pagination-->
+                    
+                </div>
+                <!-- Side widgets-->
+                <div class="col-lg-4">
+                    
+                    
+                    <!-- Side widget-->
+                    <div class="card mb-4">
+                        {% block side_widget %}
+                        
+                        {% endblock %}
 
-    {{ mensaje }}
-    
+                        {% block mensaje %}
+                        
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
 {% endblock %}
+

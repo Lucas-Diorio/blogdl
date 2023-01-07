@@ -3,9 +3,8 @@
 {% load static %}
 
 {% block titulo_principal %}
-<h1 class="fw-bolder">Registrarse</h1>
-<p class="lead mb-0">Por favor registrate para ver contenido del blog</p>
-<p class="lead mb-0"><b>{{ mensaje }}</b></p>
+<h1 class="fw-bolder">Perfil de Usuario</h1>
+<p class="lead mb-0">Información de tu perfil de Usuario</p>
 {% endblock %}
 
 {% block contenido %}
@@ -17,16 +16,25 @@
                     <div class="card mb-4">
                         
                         <div class="card-body">
-                            <h2 class="text-black mb-5">Registrarse</h2>
-                            <form action="{% url 'register' %}" method="POST">{% csrf_token %}
+                          {{ mensaje }}
+                            <img src= "{{ avatar }}" width="250">
+                            <table>
+                                
+                                <p>Username: {{ user.username }}</p>
+                                <p>Nombre: {{ user.first_name }}</p>
+                                <p>Apellido: {{ user.last_name }}</p>
+                                <p>email: {{ user.email }}</p>
+                                <p>Descripcion: {{ perfil.descripcion }}</p>
                                
-                                <table>
-                                    {{ form.as_table }}
-                                </table>
-                                <br></br>
-                                <input type="submit" value="Ingresar">
-                            
-                            </form>
+                            </table>
+                            <div class="form-group">
+                                <br>
+                                <form action="{% url 'perfiledit' %}">
+                                    <input type="submit" class="btn btn-primary btn-block" value="Editar Perfil" />
+                                </form>
+                                
+                            </div>
+                        
                         </div>
                     </div>
                     <!-- Pagination-->
@@ -50,4 +58,3 @@
             </div>
         </div>
 {% endblock %}
-
