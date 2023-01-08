@@ -9,8 +9,8 @@
                     {% block titulo_principal %}
                         <h1 class="fw-bolder">{{ lectura_publicacion.titulo }}</h1>
                         <img class="card-img-top" src="{{ lectura_publicacion.imagen.url }}" width="550" height="350"  />
-                        <h6>{{ lectura_publicacion.autor }}, {{ lectura_publicacion.fecha }} </h6>
-                        
+                        <br>
+                        <h6>{{ lectura_publicacion.autor }}, {{ lectura_publicacion.fecha }} </h6>  
                     {% endblock %}
                 </div>
             </div>
@@ -21,10 +21,10 @@
 <div class="py-5 bg-light border-bottom mb-4">
     <div class="text-center my-5">
         <p>
+            
+            <h4>{{ lectura_publicacion.intro | safe }}</h4>
             <br>
-            <h3><u>{{ lectura_publicacion.intro }}</u></h3>
-            <br>
-            <h6>{{ lectura_publicacion.contenido }}</h6>
+            <h6>{{ lectura_publicacion.contenido | safe }}</h6>
         </p>
     </div>
 </div>

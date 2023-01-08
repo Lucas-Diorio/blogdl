@@ -8,4 +8,5 @@ urlpatterns = [
     path('addpost/', add_post, name="addpost"),
     path("post/<id>", post, name = "post"),
     path('buscarpost/', buscarPost, name="buscarpost"),
+    path('home/', home, name="home"),
 ]

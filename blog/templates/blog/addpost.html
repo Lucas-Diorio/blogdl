@@ -25,8 +25,8 @@
                     <div class="card mb-4">
                         <form action="{% url 'addpost' %}" method="post" enctype="multipart/form-data"> {% csrf_token %}
                             <table>
-                                {{ form_post }}
-                                {{ form_post.media }}
+                                {{ form_post | safe }}
+                                {{ form_post.media | safe }}
                             </table>
                             <div class="form-group">
                                 <input type="submit" class="btn btn-primary btn-block" value="Agregar post">

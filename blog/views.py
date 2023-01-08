@@ -68,7 +68,7 @@ def add_post(request):
             nombre_autor = request.user.get_full_name()
             nueva_publicacion = Post(titulo = datos["titulo"], intro = datos["intro"], contenido = datos["contenido"], imagen = datos["imagen"] , autor = nombre_autor, fecha = date.today())
             nueva_publicacion.save()
-            return render(request, "blog/inicio.html", {"mensaje": "El post ha sido agregado exitosamente!"})
+            return render(request, "blog/home.html", {"mensaje": "El post ha sido agregado exitosamente!"})
         else:
             return render(request, "blog/addpost.html", {"form_post" : Form_Post(), "mensaje": "Intentelo Nuevamente, hubo un error"})
     else:
@@ -83,3 +83,6 @@ def buscarPost(request):
         return render(request, "blog/buscarpost.html", {"posts":posts})
     else: 
         return render(request, "blog/inicio.html", {"mensaje_buscar":"Ingresa titulo a buscar!"})
+
+def home(request):
+    return render(request, "blog/home.html", {"avatar": obtenerAvatar(request)})

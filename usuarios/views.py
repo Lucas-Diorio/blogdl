@@ -33,9 +33,6 @@ def obtenerAvatar(request):
 def userPage(request):
     return render(request, "usuarios/user.html")
 
-def index(request):
-    return render(request, "usuarios/index.html")
-
 
 
 # login
@@ -50,16 +47,16 @@ def Login_request(request):
             usuario=authenticate(username=usu, password=clave)#trae un usuario de la base con ese usuario y pass
             if usuario is not None:
                 login(request, usuario)
-                return render(request, 'usuarios/user.html', {"avatar": obtenerAvatar(request)})
+                return render(request, 'usuarios/user.html')
             else: 
-                return render(request, 'usuarios/login.html', {'mensaje': 'Usuario o contraseña incorrectos', "form": AuthenticationForm, "avatar": obtenerAvatar(request)})
+                return render(request, 'usuarios/login.html', {'mensaje': 'Usuario o contraseña incorrectos', "form": AuthenticationForm})
         else:
-            return render(request, 'usuarios/login.html', {'mensaje':"Usuario o contraseña incorrectos", "form": AuthenticationForm, "avatar": obtenerAvatar(request)}) 
+            return render(request, 'usuarios/login.html', {'mensaje':"Usuario o contraseña incorrectos", "form": AuthenticationForm}) 
 
 
     else:
         form = AuthenticationForm()
-    return render(request, "usuarios/login.html", {"form": form, "mensaje": "Bienvenido nuevamente", "avatar": obtenerAvatar(request)})
+    return render(request, "usuarios/login.html", {"form": form, "mensaje": "Bienvenido nuevamente"})
 
 # register
 def Register(request):
@@ -73,7 +70,7 @@ def Register(request):
             return render(request, "usuarios/register.html", {"form":form}, {"mensaje": "Hubo un error, intente nuevamente."})
     else:
         form = RegisterForm()
-    return render(request, "usuarios/register.html", {"form":form, "mensaje": "Registrar usuario", "avatar": obtenerAvatar(request)})
+    return render(request, "usuarios/register.html", {"form":form, "mensaje": "Registrar usuario"})
 
 # edituser
 @login_required
@@ -89,12 +86,12 @@ def editUser(request):
             usuario.first_name=info["first_name"]
             usuario.last_name=info["last_name"]
             usuario.save()
-            return render(request, "usuarios/user.html", {"mensaje":"Perfil editado correctamente", "avatar": obtenerAvatar(request)})
+            return render(request, "usuarios/user.html", {"mensaje":"Perfil editado correctamente"})
         else:
-            return render(request, "usuarios/editUser.html", {"form":form, "nombreusuario":usuario.first_name, "mensaje": "Error al editar el perfil, intente nuevamente", "avatar": obtenerAvatar(request)})  
+            return render(request, "usuarios/editUser.html", {"form":form, "nombreusuario":usuario.first_name, "mensaje": "Error al editar el perfil, intente nuevamente"})  
     else:
         form=UserEditForm(instance=usuario)
-        return render(request, "usuarios/editUser.html", {"form":form, "nombreusuario":usuario.first_name, "avatar": obtenerAvatar(request)})
+        return render(request, "usuarios/editUser.html", {"form":form, "nombreusuario":usuario.first_name})
 
 @ login_required
 def perfil_edit(request):
@@ -111,11 +108,11 @@ def perfil_edit(request):
                 datos_viejos.delete()
             datos_nuevos = Perfil(user=request.user, descripcion = request.POST["descripcion"], avatar = request.FILES["avatar"] )
             datos_nuevos.save()
-            return render(request, "usuarios/user.html", {"mensaje": "El perfil ha sido editado exitosamente!", "avatar": obtenerAvatar(request)})
+            return render(request, "usuarios/user.html", {"mensaje": "El perfil ha sido editado exitosamente!"})
         else:
-            return render(request, "usuarios/perfil_edit.html", {"form_edit_perfil" : formulario_edit, "mensaje": "Intentelo Nuevamente, hubo un error", "avatar": obtenerAvatar(request)})
+            return render(request, "usuarios/perfil_edit.html", {"form_edit_perfil" : formulario_edit, "mensaje": "Intentelo Nuevamente, hubo un error"})
     else:
-        return render(request, "usuarios/perfil_edit.html", {"form_edit_perfil": formulario_edit, "mensaje": "Editar perfil", "avatar": obtenerAvatar(request)})
+        return render(request, "usuarios/perfil_edit.html", {"form_edit_perfil": formulario_edit, "mensaje": "Editar perfil"})
 
 
 @ login_required
@@ -133,4 +130,4 @@ def user_perfil(request):
 @ login_required
 def user_logout(request):
     logout(request)
-    return render(request, "usuarios/logout.html", {"mensaje": "Ha cerrado sesion!", "avatar": obtenerAvatar(request)})
+    return render(request, "usuarios/logout.html", {"mensaje": "Has cerrado sesion!"})
