@@ -1,10 +1,19 @@
-{% extends "usuarios/user.html" %}
+{% extends "blog/padre.html" %}
 
 {% load static %}
 
-{% block titulo_principal %}
-<h1 class="fw-bolder">Perfil de Usuario</h1>
-<p class="lead mb-0">Información de tu perfil de Usuario</p>
+{% block encabezado %}
+        <header class="py-5 bg-light border-bottom mb-4">
+            <div class="container">
+                <div class="text-center my-5">
+                    {% block titulo_principal %}
+                        <h1 class="fw-bolder">Perfil de usuario</h1>
+                        <p class="lead mb-0">Información de tu perfil de usuario</p>
+                        <p class="lead mb-0">{{ mensaje }}</p>
+                    {% endblock %}
+                </div>
+            </div>
+        </header>
 {% endblock %}
 
 {% block contenido %}
@@ -24,7 +33,7 @@
                                 <p>Nombre: {{ user.first_name }}</p>
                                 <p>Apellido: {{ user.last_name }}</p>
                                 <p>email: {{ user.email }}</p>
-                                <p>Descripcion: {{ perfil.descripcion }}</p>
+                                <p>Descripcion: {{ descripcion }}</p>
                                
                             </table>
                             <div class="form-group">
@@ -32,7 +41,10 @@
                                 <form action="{% url 'perfiledit' %}">
                                     <input type="submit" class="btn btn-primary btn-block" value="Editar Perfil" />
                                 </form>
-                                
+                                <br>
+                                <form action="{% url 'editUser' %}">
+                                    <input type="submit" class="btn btn-primary btn-block" value="Editar Uusario" />
+                                </form>
                             </div>
                         
                         </div>
@@ -40,21 +52,7 @@
                     <!-- Pagination-->
                     
                 </div>
-                <!-- Side widgets-->
-                <div class="col-lg-4">
-                    
-                    
-                    <!-- Side widget-->
-                    <div class="card mb-4">
-                        {% block side_widget %}
-                        
-                        {% endblock %}
-
-                        {% block mensaje %}
-                        
-                        {% endblock %}
-                    </div>
-                </div>
+                
             </div>
         </div>
 {% endblock %}

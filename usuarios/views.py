@@ -128,3 +128,9 @@ def user_perfil(request):
         descripcion = ""
         
     return render(request, "usuarios/userperfil.html", {"user" : request.user, "avatar": obtenerAvatar(request)})
+
+
+@ login_required
+def user_logout(request):
+    logout(request)
+    return render(request, "usuarios/logout.html", {"mensaje": "Ha cerrado sesion!", "avatar": obtenerAvatar(request)})

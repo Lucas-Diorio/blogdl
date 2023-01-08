@@ -1,5 +1,4 @@
 {% extends "blog/padre.html" %}
-
 {% load static %}
 
 {% block encabezado %}
@@ -7,8 +6,8 @@
             <div class="container">
                 <div class="text-center my-5">
                     {% block titulo_principal %}
-                        <h1 class="fw-bolder">Editar perfil</h1>
-                        <p class="lead mb-0">Modificar información de tu perfil</p>
+                        <h1 class="fw-bolder">Resultados de la búsqueda</h1>
+                        <p class="lead mb-0">Aquí verás las últimas noticias sobre Series y Películas</p>
                         <p class="lead mb-0">{{ mensaje }}</p>
                     {% endblock %}
                 </div>
@@ -25,19 +24,12 @@
                     <div class="card mb-4">
                         
                         <div class="card-body">
+                          <ul>
+                            {% for post in posts %}
+                            <li><a class="nav-link" href="{% url 'post' post.id %}">{{ post.titulo }}</a></li>
                           
-                          <form action="{% url 'perfiledit'%}" method="post" enctype="multipart/form-data"> {% csrf_token %}
-                            <table>
-                                {{ form_edit_perfil }}
-                                <br>
-                                {{ form_edit_perfil.media }}
-                               
-                            </table>
-                            <div class="form-group">
-                                <br>
-                                <input type="submit" class="btn btn-primary btn-block" value="Editar perfil">
-                            </div>
-                        </form>
+                          {% endfor %} 
+                          </ul>
                         </div>
                     </div>
                     <!-- Pagination-->

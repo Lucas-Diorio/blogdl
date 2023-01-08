@@ -1,11 +1,19 @@
-{% extends "usuarios/user.html" %}
+{% extends "blog/padre.html" %}
 
 {% load static %}
 
-{% block titulo_principal %}
-<h1 class="fw-bolder">Editar Usuario</h1>
-<p class="lead mb-0">Modifica la información de tu usuario</p>
-<p class="lead mb-0">{{ mensaje }}</p>
+{% block encabezado %}
+        <header class="py-5 bg-light border-bottom mb-4">
+            <div class="container">
+                <div class="text-center my-5">
+                    {% block titulo_principal %}
+                        <h1 class="fw-bolder">Editar Usuario</h1>
+                        <p class="lead mb-0">Edita la información de tu usuario</p>
+                        <p class="lead mb-0">{{ mensaje }}</p>
+                    {% endblock %}
+                </div>
+            </div>
+        </header>
 {% endblock %}
 
 {% block contenido %}
@@ -33,21 +41,7 @@
                     <!-- Pagination-->
                     
                 </div>
-                <!-- Side widgets-->
-                <div class="col-lg-4">
-                    
-                    
-                    <!-- Side widget-->
-                    <div class="card mb-4">
-                        {% block side_widget %}
-                        
-                        {% endblock %}
-
-                        {% block mensaje %}
-                        
-                        {% endblock %}
-                    </div>
-                </div>
+                
             </div>
         </div>
 {% endblock %}

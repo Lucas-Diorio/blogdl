@@ -20,11 +20,11 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('blog/', include('blog.urls')),
+    path('', include('blog.urls')),
     re_path(r'^ckeditor/', include('ckeditor_uploader.urls')), # The CKEditor path
     
     #usuarios
-    path('', include('usuarios.urls')),
+    path('usuarios/', include('usuarios.urls')),
 
     #mensajes
     path('mensajes/', include("mensajes.urls")),

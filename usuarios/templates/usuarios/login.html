@@ -1,10 +1,19 @@
-{% extends "usuarios/user.html" %}
+{% extends "blog/padre.html" %}
 
 {% load static %}
 
-{% block titulo_principal %}
-<h1 class="fw-bolder">Login</h1>
-<p class="lead mb-0">Por favor loguearse para ingresar a la web</p>
+{% block encabezado %}
+        <header class="py-5 bg-light border-bottom mb-4">
+            <div class="container">
+                <div class="text-center my-5">
+                    {% block titulo_principal %}
+                        <h1 class="fw-bolder">Login</h1>
+                        <p class="lead mb-0">Por favor loguearse para ingresar al Blog</p>
+                        <p class="lead mb-0">{{ mensaje }}</p>
+                    {% endblock %}
+                </div>
+            </div>
+        </header>
 {% endblock %}
 
 {% block contenido %}
@@ -16,7 +25,7 @@
                     <div class="card mb-4">
                         
                         <div class="card-body">
-                          {{ mensaje }}
+                          
                           <form action="{% url 'login' %}" method="POST">{% csrf_token %}
                             <table>
                               {{ form.as_table }}

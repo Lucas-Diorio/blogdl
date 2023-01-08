@@ -46,18 +46,18 @@ def inicio(request):
         post_3 = posts[2]
         post_4 = posts[3]
         post_5 = posts[4]
-    return render(request, "usuarios/user.html", {"post_1": post_1, "post_2": post_2, "post_3": post_3, "post_4": post_4,"post_5": post_5, "avatar": obtenerAvatar(request)})
+    return render(request, "blog/inicio.html", {"post_1": post_1, "post_2": post_2, "post_3": post_3, "post_4": post_4,"post_5": post_5, "avatar": obtenerAvatar(request)})
 
 
 # Post.objects.none() envia un queryset vacio
 
 def aboutme(request):
-    return render(request, "aboutme.html", {"avatar": obtenerAvatar(request)})
+    return render(request, "blog/aboutme.html", {"avatar": obtenerAvatar(request)})
 
 
 def post(request, id):
     lectura_publicacion = Post.objects.get(id = id)
-    return render(request, "post.html", {"lectura_publicacion" : lectura_publicacion, "avatar": obtenerAvatar(request)})
+    return render(request, "blog/post.html", {"lectura_publicacion" : lectura_publicacion, "avatar": obtenerAvatar(request)})
 
 @ login_required
 def add_post(request):
@@ -68,8 +68,18 @@ def add_post(request):
             nombre_autor = request.user.get_full_name()
             nueva_publicacion = Post(titulo = datos["titulo"], intro = datos["intro"], contenido = datos["contenido"], imagen = datos["imagen"] , autor = nombre_autor, fecha = date.today())
             nueva_publicacion.save()
-            return render(request, "usuarios/user.html", {"mensaje": "El post ha sido agregado exitosamente!"})
+            return render(request, "blog/inicio.html", {"mensaje": "El post ha sido agregado exitosamente!"})
         else:
             return render(request, "blog/addpost.html", {"form_post" : Form_Post(), "mensaje": "Intentelo Nuevamente, hubo un error"})
     else:
         return render(request, "blog/addpost.html", {"form_post" : Form_Post(), "mensaje": "Agregar un Post", "avatar": obtenerAvatar(request)})
+
+
+def buscarPost(request):
+    if request.GET["titulo"]:
+        titulo=request.GET["titulo"]
+
+        posts=Post.objects.filter(titulo__icontains = titulo)
+        return render(request, "blog/buscarpost.html", {"posts":posts})
+    else: 
+        return render(request, "blog/inicio.html", {"mensaje_buscar":"Ingresa titulo a buscar!"})
